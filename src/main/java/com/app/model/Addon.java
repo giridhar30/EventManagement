@@ -20,17 +20,17 @@ public abstract class Addon {
 	private int id;
 	private String name;
 	private int price;
-	
+
 	@ManyToMany
 	private List<Event> events;
-	
+
 	abstract Map<Object, Object> getParticulars();
-	
+
 	@Override
 	public String toString() {
 		return "Addon [id=" + id + ", name=" + name + ", price=" + price + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name, price);
@@ -79,8 +79,5 @@ public abstract class Addon {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
-	
-	
-
 
 }

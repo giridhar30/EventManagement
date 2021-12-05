@@ -33,31 +33,29 @@ public class Event {
 	
 	private boolean paymentStatus;
 	private int totalPrice;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "hall_id")
 	private Hall hall;
-	
+
 	@ManyToMany
 	@JoinTable(name = "event_addon")
 	private List<Addon> addons;
-	
+
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", type=" + type + ", from=" + fromDate + ", to=" + toDate + ", paymentStatus="
 				+ paymentStatus + ", totalPrice=" + totalPrice + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(addons, fromDate, id, paymentStatus, toDate, totalPrice, type);
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -72,8 +70,6 @@ public class Event {
 				&& paymentStatus == other.paymentStatus && Objects.equals(toDate, other.toDate)
 				&& totalPrice == other.totalPrice && Objects.equals(type, other.type);
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -146,7 +142,5 @@ public class Event {
 	public void setAddons(List<Addon> addons) {
 		this.addons = addons;
 	}
-	
-	
-	
+
 }
