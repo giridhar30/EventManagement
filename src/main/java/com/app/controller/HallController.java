@@ -23,7 +23,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping(value = "/event/hall")
+@RequestMapping(value = "/api/event/hall")
 public class HallController {
 	
 	@Autowired

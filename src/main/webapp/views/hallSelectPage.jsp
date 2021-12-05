@@ -1,7 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="/WEB-INF/customtags.tld" prefix="mytag" %>
 <!DOCTYPE html>
 <html>
@@ -15,7 +14,7 @@
             console.log(from, to);
             if(from && to) {
                const request = new XMLHttpRequest();
-               request.open("GET", 'http://localhost:8080/event/hall/' + from + "/" + to, true);
+               request.open("GET", 'http://localhost:8080/api/event/hall/' + from + "/" + to, true);
                request.onreadystatechange = () => {
                   if(request.readyState === request.DONE && request.status == 200) {
                      let json = JSON.parse(request.response)

@@ -13,7 +13,7 @@ import com.app.dao.EventTypeDAO;
 import com.app.dao.HallDAO;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping({"/", "/event"})
 public class EventController {
 	
 	@Autowired
@@ -28,10 +28,17 @@ public class EventController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/event/{event_name}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{event_name}", method = RequestMethod.GET)
 	public ModelAndView eventGet(@PathVariable("event_name") String eventName, ModelAndView mv, HttpSession session) {
 		session.setAttribute("eventName", eventName);
 		mv.setViewName("hallSelectPage");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/hall/{hall_id}", method = RequestMethod.GET)
+	public ModelAndView hallGet(@PathVariable("hall_id") String hallId, ModelAndView mv, HttpSession session) {
+		session.setAttribute("hallId", hallId);
+		mv.setViewName("addonPage");
 		return mv;
 	}
 }
