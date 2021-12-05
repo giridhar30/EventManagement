@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-	@GetMapping({"/", "/home"})
+	@GetMapping({"/home"})
 	public String loadHomePage(ModelMap mm, 
 			@RequestParam(value = "logout", required = false) String logout,
 			@RequestParam(value = "login", required = false) String login
