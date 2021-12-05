@@ -32,6 +32,14 @@
             const addItems = (hall, available) => {
                let li = document.createElement("li");
                let div = document.createElement("div");
+               
+               if(available) {
+                  let a = document.createElement("a");
+                  a.setAttribute("href", 'http://localhost:8080/event/hall/' + hall.id);
+                  div.appendChild(a);
+                  div = a;
+               }
+
                li.appendChild(div);
                let img = document.createElement('img');
                img.setAttribute("src", "http://localhost:8080/" + hall.imageUrl);
