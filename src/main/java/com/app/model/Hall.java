@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Hall {
 	
@@ -24,7 +26,7 @@ public class Hall {
 	
 	@Override
 	public String toString() {
-		return "Hall [id=" + id + ", name=" + name + ", capacity=" + capacity + ", price=" + price + "]";
+		return "Hall [id=" + id + ", name=" + name + ", capacity=" + capacity + ", price=" + price + ", events=" + events + "]";
 	}
 
 	@Override
@@ -85,7 +87,8 @@ public class Hall {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	
+	@JsonIgnore
 	public List<Event> getEvents() {
 		return events;
 	}
