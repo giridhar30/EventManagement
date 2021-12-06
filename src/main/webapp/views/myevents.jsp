@@ -18,9 +18,30 @@ prefix="c" %>
   <body>
     <!-- <div id="errorMsg"></div> -->
 
-    <h1>TODO: List Events of the respective user here [past/present/future]</h1>
+    <a href="/home">Home</a>
 
-    <a href="/">Home</a>
+    <table class="table table-striped mt-5">
+      <tr class="table">
+        <th>Event</th>
+        <th>from</th>
+        <th>to</th>
+        <th>Hall</th>
+        <th>AddOns</th>
+      </tr>
+      <c:forEach items="${events}" var="event">
+        <tr>
+          <td>${event.type}</td>
+          <td>${event.fromDate}</td>
+          <td>${event.toDate}</td>
+          <td>${event.hall.name}</td>
+          <td>
+            <c:forEach items="${event.addons}" var="addon">
+              ${addon.name} <br>
+            </c:forEach>
+          </td>
+        </tr>
+      </c:forEach>
+    </table>
 
     <!-- <c:set var="error" value="${error}" />
     <c:if test="${error!=null}">

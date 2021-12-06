@@ -1,5 +1,9 @@
 package com.app.service;
 
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +20,7 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
+	@Transactional
 	public boolean saveUser(User user) {	
 		User already = userDao.findByMailId(user.getMailId()).orElse(null);
 		if (already != null) {
@@ -25,6 +30,11 @@ public class UserService {
 			userDao.save(user);
 			return true;
 		}
+	}
+	
+	@Transactional
+	public Optional<User> findByMailId(String mailId) {
+		return userDao.findByMailId(mailId);
 	}
 
 }
