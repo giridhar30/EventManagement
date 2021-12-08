@@ -18,8 +18,17 @@ prefix="c" %>
   <body>
     <div id="errorMsg"></div>
 
+    <div class="nav-bar">
+      <div class="left">
+        <h5>GRANDEUR EVENT MANAGERS</h5>
+      </div>
+      <div class="right">
+        <a class="m-4" href="/user/register">Sign Up</a>
+      </div>
+    </div>
+
     <form method="post" class="m-5" modelAttribute="userData">
-      <p class="h1 text-muted text-center">User Login</p>
+      <p class="h2 text-muted text-center">User Login</p>
 
       <div class="form-group">
         <label for="mailId">Email</label>

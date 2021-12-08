@@ -16,17 +16,40 @@ prefix="c" %>
     <script src="/assets/scripts.js"></script>
   </head>
   <body>
-    <!-- <div id="errorMsg"></div> -->
 
-    <a href="/home">Home</a>
+    <c:url value="/user/logout" var="logoutUrl" />
+    <form id="logout" action="${logoutUrl}" method="post">
+      <input
+        type="hidden"
+        name="${_csrf.parameterName}"
+        value="${_csrf.token}"
+      />
+    </form>
+
+    <div class="nav-bar">
+      <div class="left">
+        <h5>GRANDEUR EVENT MANAGERS</h5>
+      </div>
+      <div class="right">
+        <a class="m-4" href="/home">Home</a>
+            <a
+              class="m-4"
+              href="javascript:document.getElementById('logout').submit()"
+            >
+              Logout
+            </a>
+      </div>
+    </div>    
+
+    <p class="h2 text-muted text-center mt-3">My Events</p>
 
     <table class="table table-striped mt-5">
       <tr class="table">
         <th>Event</th>
-        <th>from</th>
-        <th>to</th>
+        <th>From</th>
+        <th>To</th>
         <th>Hall</th>
-        <th>AddOns</th>
+        <th>Add-Ons</th>
       </tr>
       <c:forEach items="${events}" var="event">
         <tr>
@@ -42,12 +65,5 @@ prefix="c" %>
         </tr>
       </c:forEach>
     </table>
-
-    <!-- <c:set var="error" value="${error}" />
-    <c:if test="${error!=null}">
-      <script>
-        showErrorMsg("${error}");
-      </script>
-    </c:if> -->
   </body>
 </html>

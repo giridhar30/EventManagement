@@ -27,6 +27,7 @@ public class UserService {
 			return false;
 		} else {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			user.setPhone("+91" + user.getPhone());
 			userDao.save(user);
 			return true;
 		}
