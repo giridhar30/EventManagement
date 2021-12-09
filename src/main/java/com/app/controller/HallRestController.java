@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping(value = "/api/event/hall")
-public class HallController {
+public class HallRestController {
 	
 	@Autowired
 	HallDAO hallDao;

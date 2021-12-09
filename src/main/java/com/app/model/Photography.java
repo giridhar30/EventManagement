@@ -4,6 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.servlet.ModelAndView;
+
+import com.app.service.EventService;
 
 @Entity
 public class Photography extends Addon {
@@ -11,10 +16,15 @@ public class Photography extends Addon {
 	private String type;
 	
 	@Override
-	Map<Object, Object> getParticulars() {
+	public Map<Object, Object> getParticulars() {
 		Map<Object, Object> map = new HashMap<>();
 		map.put("Type", type);
 		return map;
+	}
+	
+	@Override
+	public String visit(HttpSession session, EventService eventService) {
+		return eventService.fetchAddon(this, session);
 	}
 	
 	@Override

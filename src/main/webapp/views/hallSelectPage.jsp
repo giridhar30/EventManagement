@@ -2,64 +2,139 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="/WEB-INF/customtags.tld" prefix="mytag" %>
+ <%@ taglib
+uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
    <head>
       <meta charset="UTF-8">
       <title>Choose Hall</title>
+      <style>
+         .card-text {
+            margin: -3px;
+            margin-left: 0px;
+         }
+      </style>
       <script>
          function fetchHalls() {
             const from = document.getElementById("from").value;
-            const to = document.getElementById("to").value;
-            console.log(from, to);
+            const toEle = document.getElementById("to");
+            let to = null;
+            if(!toEle) {
+               to = from;
+            } else {
+               to = toEle.value;
+            }
+
             if(from && to) {
                const request = new XMLHttpRequest();
                request.open("GET", 'http://localhost:8080/api/event/hall/' + from + "/" + to, true);
                request.onreadystatechange = () => {
                   if(request.readyState === request.DONE && request.status == 200) {
                      let json = JSON.parse(request.response)
-                     displayHalls(json);
+                     displayHalls(json, from, to);
                   } 
                };
                request.send();
             }
          }
 
-         function displayHalls(halls) {
+         function displayHalls(halls, from, to) {
             console.log(halls);
             const list = document.getElementById("halls");
-            const addItems = (hall, available) => {
-               let li = document.createElement("li");
-               let div = document.createElement("div");
-               
-               if(available) {
-                  let a = document.createElement("a");
-                  a.setAttribute("href", 'http://localhost:8080/event/hall/' + hall.id);
-                  div.appendChild(a);
-                  div = a;
-               }
+            
+            const row = document.createElement("div");
+            row.setAttribute("class", "row");
+            list.appendChild(row);
 
-               li.appendChild(div);
+            list.removeChild(list.childNodes[0]);
+            const addItems = (hall, available) => {
+               let outerdiv = document.createElement("div");
+               outerdiv.setAttribute("class", "col-sm-4");
+               let div = document.createElement("div");
+              
+               div.setAttribute("class", "card");
+               div.setAttribute("style", "width: 18rem;")
+               
                let img = document.createElement('img');
                img.setAttribute("src", "http://localhost:8080/" + hall.imageUrl);
+               img.setAttribute("class","card-img-top");
+               img.setAttribute("style", "height: 220px; object-fit: cover;")
+               let innerdiv = document.createElement("div");
+               innerdiv.setAttribute("class", "card-body")
                // add class here for img
-               let p1 = document.createElement("p");
-               p1.innerHTML = hall.name;
-               let p2 = document.createElement("p");
-               p2.innerHTML = "Capacity: " + hall.capacity;
-               let p3 = document.createElement("p");
-               p3.innerHTML = "Price: &#x20b9;" + hall.price + "/day";
-               div.appendChild(img);
-               div.appendChild(p1);
-               div.appendChild(p2);
-               div.appendChild(p3);
+               let title = document.createElement("h5");
+               title.setAttribute("class", "card-title");
+               title.setAttribute("style", "margin-top: 7px");
+               title.innerHTML = hall.name;
                
-               if(!available) {
-                  let p4 = document.createElement("p");
-                  p4.innerHTML = "Hall Booked" ;
-                  div.appendChild(p4);
+               let address = document.createElement("p");
+               address.setAttribute("class", "card-text");
+               address.innerHTML = hall.address;
+
+               let capacity = document.createElement("p");
+               capacity.setAttribute("class", "card-text");
+               capacity.innerHTML = "Capacity: " + hall.capacity;
+
+               let price = document.createElement("h6");
+               price.setAttribute("class", "card-text");
+               price.setAttribute("style", "position: absolute; bottom: 130px; right: 10px;");
+               price.innerHTML = "&#x20b9;" + hall.price + "/day";
+               
+               let form = document.createElement("form");
+               form.setAttribute("method", "post");
+               form.setAttribute("action", "/event/hall");
+               form.setAttribute("style", "margin-top: 15px; float: right")
+
+               let input1 = document.createElement("input");
+               input1.setAttribute("type", "hidden");
+               input1.setAttribute("name", "from");
+               input1.setAttribute("value", from);
+               
+               let input2 = document.createElement("input");
+               input2.setAttribute("type", "hidden");
+               input2.setAttribute("name", "to");
+               input2.setAttribute("value", to);
+
+               let input3 = document.createElement("input");
+               input3.setAttribute("type", "hidden");
+               input3.setAttribute("name", "hall_id");
+               input3.setAttribute("value", hall.id);
+
+               let input4 = document.createElement("input");
+               input4.setAttribute("type", "hidden");
+               input4.setAttribute("name", "${_csrf.parameterName}");
+               input4.setAttribute("value", "${_csrf.token}");
+               
+               
+               let button = document.createElement("button");
+               button.setAttribute("class", "btn btn-outline-secondary");
+               button.setAttribute("type", "submit");
+
+               if(available) {
+                  button.innerHTML = "SELECT";
+               } else {
+                  button.innerHTML = "BOOKED";
+                  button.setAttribute("disabled", "")
                }
-               list.appendChild(li);
+
+
+               form.appendChild(input1);
+               form.appendChild(input2);
+               form.appendChild(input3);
+               form.appendChild(input4);
+               form.appendChild(button);
+
+               div.appendChild(img);
+               innerdiv.appendChild(title)
+               innerdiv.appendChild(address);
+               innerdiv.appendChild(capacity);
+               innerdiv.appendChild(price);
+               innerdiv.appendChild(form);
+               
+               div.appendChild(innerdiv);
+               outerdiv.appendChild(div);
+               row.appendChild(outerdiv);
             }
             halls.available.forEach((hall) => {
               addItems(hall, true);
@@ -68,19 +143,56 @@
               addItems(hall, false);
             })
          }
-      </script>
-   </head>
-   <body>
-      Select event date
-      <form>
-         <label>From: </label> <input type="date" id="from" />
-         <label>To: </label> <input type="date" id="to" />
-         <button type="button" onclick="fetchHalls()">Find available Halls</button>
-      </form>
-      <div>
-         <ul id="halls">
+         function computeDate() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+               dd = '0' + dd;
+            }
+            if (mm < 10) {
+               mm = '0' + mm;
+            } 
+            today = yyyy + '-' + mm + '-' + dd;
+            document.getElementById("from").setAttribute("min", today);
 
-         </ul>
+            var to = document.getElementById("to");
+            if(to) {
+               to.setAttribute("min", today);
+            }
+         }
+         
+         function handleFromChange() {
+            var to = document.getElementById("to");
+            if(to) {
+               var min = document.getElementById("from").value;
+               to.setAttribute("min", min);
+            }
+         }
+      </script>
+          <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+         />
+   </head>
+   <body onload="computeDate()">
+      <%@ include file="navbar.jsp" %>
+      <div style="text-align: center;">
+         <p>When's the ${event.type}? </p>
+         <form>
+            <input type="date" id="from" onchange="handleFromChange()" value="2021-12-10" />
+            <c:if test="${event.type.toLowerCase().equals(\"wedding\") == true}">
+               <label style="margin-left: 5px; margin-right: 5px;">  To  </label> <input type="date" id="to" value="2021-12-10"  />
+            </c:if>
+            <br/>
+            <button style="margin-top: 5px;margin-bottom: 20px;" type="button" class="btn btn-outline-primary" onclick="fetchHalls()">Get Halls</button>
+         </form>
+      </div>
+      <div class='container'  id="halls">
+         
       </div>
    <body>
 </html>

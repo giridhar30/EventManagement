@@ -11,20 +11,31 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.app.service.EventService;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Component
 public abstract class Addon {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	private String name;
 	private int price;
+	private String phone;
 
 	@ManyToMany
 	private List<Event> events;
-
-	abstract Map<Object, Object> getParticulars();
+	
+	public abstract Map<Object, Object> getParticulars();
+	public abstract String visit(HttpSession session, EventService eventService);
 
 	@Override
 	public String toString() {
@@ -79,5 +90,12 @@ public abstract class Addon {
 	public void setEvents(List<Event> events) {
 		this.events = events;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 
 }

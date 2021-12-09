@@ -29,7 +29,7 @@ public class HomeEventsDisplay extends TagSupport {
 			for(EventType eventType : eventList) {
 				System.out.println(Constants.IMG_URL + eventType.getImgUrl());
 				out.write("<li>");
-				out.write("<div><a href='/event/" + eventType.getEventName().toLowerCase() + "'>");
+				out.write("<div><a href='/event?event=" + eventType.getEventName().toLowerCase() + "'>");
 				out.write("<img src='" + Constants.IMG_URL + eventType.getImgUrl()  + "' alt='Event Image' width='100px' height='100px' />");
 				out.write("<p>" + eventType.getEventName() + "</p>");
 				out.write("</a></div>");

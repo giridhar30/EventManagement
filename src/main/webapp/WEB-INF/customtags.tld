@@ -16,14 +16,35 @@
       <rtexprvalue>true</rtexprvalue>
     </attribute>
   </tag>
-  <!--<tag>
-    <name>shopDisplay</name>
-    <tagclass>com.ShopDisplay</tagclass>
+  <tag>
+    <name>decorDisplay</name>
+    <tagclass>com.customtags.DecorationDisplay</tagclass>
     <bodycontent>empty</bodycontent>
     <attribute>
-      <name>shopid</name>
+      <name>decor</name>
       <required>true</required>
       <rtexprvalue>true</rtexprvalue>
     </attribute>
-  </tag>-->
+  </tag>
+  <tag>
+    <name>cakeDisplay</name>
+    <tagclass>com.customtags.CakeDisplay</tagclass>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>cake</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>photoDisplay</name>
+    <tagclass>com.customtags.PhotographyDisplay</tagclass>
+    <bodycontent>empty</bodycontent>
+    <attribute>
+      <name>photo</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+ 
 </taglib>

@@ -3,15 +3,18 @@ package com.app.model;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import com.app.serializers.LocalDateDeserializer;
 import com.app.serializers.LocalDateSerializer;
@@ -22,9 +25,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Entity
 public class Event {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String type;
+	private int noOfDays;
 	
 	@JsonDeserialize(using = LocalDateDeserializer.class)  
 	@JsonSerialize(using = LocalDateSerializer.class) 
@@ -32,7 +36,7 @@ public class Event {
 	private LocalDate fromDate, toDate;
 	
 	private boolean paymentStatus;
-	private int totalPrice;
+	private float totalPrice;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -111,11 +115,11 @@ public class Event {
 		this.paymentStatus = paymentStatus;
 	}
 
-	public int getTotalPrice() {
+	public float getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
@@ -141,6 +145,14 @@ public class Event {
 
 	public void setAddons(List<Addon> addons) {
 		this.addons = addons;
+	}
+
+	public int getNoOfDays() {
+		return noOfDays;
+	}
+
+	public void setNoOfDays(int noOfDays) {
+		this.noOfDays = noOfDays;
 	}
 
 }

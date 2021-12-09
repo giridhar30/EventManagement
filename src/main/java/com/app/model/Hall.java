@@ -18,7 +18,7 @@ public class Hall {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String name, imageUrl;
+	private String name, imageUrl, address;
 	private	int capacity, price;
 	
 	@OneToMany(mappedBy = "hall", fetch = FetchType.LAZY)
@@ -95,6 +95,14 @@ public class Hall {
 
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 }
