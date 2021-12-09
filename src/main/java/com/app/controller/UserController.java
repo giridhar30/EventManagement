@@ -24,13 +24,9 @@ public class UserController {
 	@GetMapping("/register")
 	public String loadRegisterPage(ModelMap mm) {
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		User user = null; 
 		if (obj instanceof MyUserDetails) { 
-			user = ((MyUserDetails) obj).getUser(); 
-		} 
-		if (user != null) {
 			return "redirect:/";
-		}
+		} 
 		
 		return "register";
 	}
@@ -49,13 +45,9 @@ public class UserController {
 	@GetMapping("/login")
 	public String loadLoginPage(ModelMap mm, @RequestParam(value = "error", required = false) String error) {
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		User user = null; 
 		if (obj instanceof MyUserDetails) { 
-			user = ((MyUserDetails) obj).getUser(); 
-		} 
-		if (user != null) {
 			return "redirect:/";
-		}
+		} 
 		
 		if (error != null) {
             mm.addAttribute("error", "Invalid Credentials!");
@@ -65,7 +57,11 @@ public class UserController {
 	
 	@GetMapping("/events")
 	public String loadUserEventsPage(ModelMap mm) {
-		
+		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();  
+		if (obj instanceof MyUserDetails) { 
+			User user = ((MyUserDetails) obj).getUser(); 
+			mm.addAttribute("events", user.getEvents());
+		} 
 		return "myevents";
 	}
 	

@@ -18,8 +18,23 @@ prefix="c" %>
   <body>
     <div id="errorMsg"></div>
 
-    <form method="post" class="m-5" modelAttribute="userData">
-      <p class="h1 text-muted text-center">User Registration</p>
+    <div class="nav-bar">
+      <div class="left">
+        <h5>GRANDEUR EVENT MANAGERS</h5>
+      </div>
+      <div class="right">
+        <a class="m-4" href="/user/login">Sign In</a>
+      </div>
+    </div>
+
+    <form
+      method="post"
+      class="m-5"
+      modelAttribute="userData"
+      id="registerForm"
+      onsubmit="return validateRegistration();"
+    >
+      <p class="h2 text-muted text-center">User Registration</p>
 
       <div class="form-group">
         <label for="name">Name</label>
@@ -27,6 +42,7 @@ prefix="c" %>
           type="text"
           class="form-control border border-dark"
           name="name"
+          id="name"
           autofocus
           required
         />
@@ -47,6 +63,7 @@ prefix="c" %>
         <input
           type="password"
           class="form-control border border-dark"
+          id="pass"
           name="password"
           required
         />
@@ -57,6 +74,7 @@ prefix="c" %>
         <input
           type="password"
           class="form-control border border-dark"
+          id="cpass"
           name="ucpass"
           required
         />
@@ -67,6 +85,7 @@ prefix="c" %>
         <input
           type="text"
           class="form-control border border-dark"
+          id="phone"
           name="phone"
           required
         />

@@ -16,17 +16,54 @@ prefix="c" %>
     <script src="/assets/scripts.js"></script>
   </head>
   <body>
-    <!-- <div id="errorMsg"></div> -->
 
-    <h1>TODO: List Events of the respective user here [past/present/future]</h1>
+    <c:url value="/user/logout" var="logoutUrl" />
+    <form id="logout" action="${logoutUrl}" method="post">
+      <input
+        type="hidden"
+        name="${_csrf.parameterName}"
+        value="${_csrf.token}"
+      />
+    </form>
 
-    <a href="/">Home</a>
+    <div class="nav-bar">
+      <div class="left">
+        <h5>GRANDEUR EVENT MANAGERS</h5>
+      </div>
+      <div class="right">
+        <a class="m-4" href="/home">Home</a>
+            <a
+              class="m-4"
+              href="javascript:document.getElementById('logout').submit()"
+            >
+              Logout
+            </a>
+      </div>
+    </div>    
 
-    <!-- <c:set var="error" value="${error}" />
-    <c:if test="${error!=null}">
-      <script>
-        showErrorMsg("${error}");
-      </script>
-    </c:if> -->
+    <p class="h2 text-muted text-center mt-3">My Events</p>
+
+    <table class="table table-striped mt-5">
+      <tr class="table">
+        <th>Event</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Hall</th>
+        <th>Add-Ons</th>
+      </tr>
+      <c:forEach items="${events}" var="event">
+        <tr>
+          <td>${event.type}</td>
+          <td>${event.fromDate}</td>
+          <td>${event.toDate}</td>
+          <td>${event.hall.name}</td>
+          <td>
+            <c:forEach items="${event.addons}" var="addon">
+              ${addon.name} <br>
+            </c:forEach>
+          </td>
+        </tr>
+      </c:forEach>
+    </table>
   </body>
 </html>

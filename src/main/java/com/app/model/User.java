@@ -24,10 +24,18 @@ public class User {
     private String phone;
     private String role = "ROLE_USER";
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Event> events;
 
-    @Override
+    public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	@Override
     public String toString() {
         return "User [id=" + id + ", mailId=" + mailId + ", name=" + name + ", phone=" + phone + "]";
     }

@@ -29,23 +29,28 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       />
     </form>
 
-    <% Object obj =
-    SecurityContextHolder.getContext().getAuthentication().getPrincipal(); User
-    user = null; if (obj instanceof MyUserDetails) { user = ((MyUserDetails)
-    obj).getUser(); } if (user != null) { out.println(user); } %>
-
-    <c:choose>
-      <c:when test="${pageContext.request.userPrincipal.name != null}">
-        <a href="javascript:document.getElementById('logout').submit()">
-          Logout
-        </a>
-      </c:when>
-      <c:otherwise>
-        <a href="/user/login">Sign In</a>
-        <a href="/user/register">Sign Up</a>
-      </c:otherwise>
-    </c:choose>
-    <a href="/user/events">My Events</a>
+    <div class="nav-bar">
+      <div class="left">
+        <h5>GRANDEUR EVENT MANAGERS</h5>
+      </div>
+      <div class="right">
+        <c:choose>
+          <c:when test="${pageContext.request.userPrincipal.name != null}">
+            <a
+              class="m-4"
+              href="javascript:document.getElementById('logout').submit()"
+            >
+              Logout
+            </a>
+          </c:when>
+          <c:otherwise>
+            <a class="m-4" href="/user/login">Sign In</a>
+            <a class="m-4" href="/user/register">Sign Up</a>
+          </c:otherwise>
+        </c:choose>
+        <a class="m-4" href="/user/events">My Events</a>
+      </div>
+    </div>
 
     <c:set var="logout" value="${logout}" />
     <c:if test="${logout!=null}">
