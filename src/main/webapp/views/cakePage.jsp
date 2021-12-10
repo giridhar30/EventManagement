@@ -2,6 +2,7 @@
 contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%> <%@ taglib
 uri="/WEB-INF/customtags.tld" prefix="mytag" %> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -59,7 +60,14 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             />
           </div>
           <div class="col-sm-4">
-            <input type="submit" value="Add" class="btn btn-outline-secondary" />
+            <c:choose>
+              <c:when test="${fn:contains(addonSet, cake)}">
+                <input type="submit" value="Added" disabled="true" class="btn btn-outline-secondary" />
+              </c:when>
+              <c:otherwise>
+                <input type="submit" value="Add" class="btn btn-outline-secondary" />
+              </c:otherwise>
+            </c:choose>
           </div>
             </div>
             <input type="hidden" name="qty" value="1" />

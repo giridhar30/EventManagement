@@ -6,7 +6,6 @@ prefix="mytag" %>
   <head>
     <meta charset="UTF-8" />
     <title>Choose addons</title>
-    <link rel="stylesheet" href="/assets/styles2.css" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -39,7 +38,7 @@ prefix="mytag" %>
           <h4 style="text-align: center">Addons you might like</h4>
         </div>
       </div>
-      <div class="row" style="text-align: center; padding-top: 20px">
+      <div class="row" style="padding-top: 20px">
         <div class="col-sm-9">
           <div class="row">
             <div
@@ -49,7 +48,7 @@ prefix="mytag" %>
               <div class="card" style="width: 18rem">
                 <a href="/event/addon/decoration" class="link">
                   <img
-                    src="/images/decor/decor3.jpg"
+                    src="/images/decor/decor.jpg"
                     class="card-img-top disp-img"
                     alt="Decoration"
                   />
@@ -71,7 +70,7 @@ prefix="mytag" %>
               <div class="card" style="width: 18rem">
                 <a href="/event/addon/cake" class="link">
                   <img
-                    src="/images/cake/cake4.jpg"
+                    src="/images/cake/cake.jpg"
                     class="card-img-top disp-img"
                     alt="Cake"
                   />

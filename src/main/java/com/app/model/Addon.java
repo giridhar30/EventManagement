@@ -47,17 +47,17 @@ public abstract class Addon {
 		return Objects.hash(id, name, price);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Addon other = (Addon) obj;
-		return id == other.id && Objects.equals(name, other.name) && price == other.price;
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (this == obj)
+//			return true;
+//		if (obj == null)
+//			return false;
+//		if (getClass() != obj.getClass())
+//			return false;
+//		Addon other = (Addon) obj;
+//		return id == other.id && Objects.equals(name, other.name) && price == other.price;
+//	}
 
 	public int getId() {
 		return id;

@@ -2,6 +2,7 @@
 contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%> <%@ taglib
 uri="/WEB-INF/customtags.tld" prefix="mytag" %> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,7 +39,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
          <c:forEach items="${addon}" var="decor">
             <div class="col-sm-6" style="display: flex; align-items: center; justify-content: center;">
                <div class="card my-card" style="width: 18rem;">
-                  <img class="card-img-top disp-img" src="http://localhost:8080/${decor.imgUrl}"
+                  <img class="card-img-top disp-img" src="${decor.imgUrl}"
                   alt="${decor.name}">
                   <div class="card-body">
                      <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -52,7 +53,14 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                        name="${_csrf.parameterName}"
                        value="${_csrf.token}"
                      />
-                     <input type="submit" value="Add" class="btn btn-outline-secondary" />
+                      <c:choose>
+                        <c:when test="${fn:contains(addonSet, decor)}">
+                          <input type="submit" value="Added" disabled="true" class="btn btn-outline-secondary" />
+                        </c:when>
+                        <c:otherwise>
+                          <input type="submit" value="Add" class="btn btn-outline-secondary" />
+                        </c:otherwise>
+                      </c:choose>
                    </form>
                   </div>
                 </div>

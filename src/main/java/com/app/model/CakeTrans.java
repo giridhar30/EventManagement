@@ -45,28 +45,6 @@ public class CakeTrans extends Addon {
 	}
 	
 	
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + Objects.hash(cake, quantity, weight);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CakeTrans other = (CakeTrans) obj;
-		return Objects.equals(cake, other.cake) && quantity == other.quantity
-				&& Float.floatToIntBits(weight) == Float.floatToIntBits(other.weight);
-	}
-
 	public Cake getCake() {
 		return cake;
 	}
