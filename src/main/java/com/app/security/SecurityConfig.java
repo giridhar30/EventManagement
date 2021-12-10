@@ -28,7 +28,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     		.disable()
     		.authorizeRequests()
 	    	.antMatchers("/").permitAll()
-	    	.antMatchers("/user/events", "/payment", "/payment/response").hasRole("USER")
+	    	.antMatchers("/user/events", "/payment", "/payment/response", 
+	    			"/event/hall", "/event/addon", "/event/addon/*/*").hasRole("USER")
 	    	.and()
 	    	.formLogin()
 	    	.loginPage("/user/login")

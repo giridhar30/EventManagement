@@ -94,4 +94,5 @@ public class AddonController {
 		mv.setViewName("photoPage");
 		return mv;
 	}
+	
 }
