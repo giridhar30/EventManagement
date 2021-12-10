@@ -16,23 +16,30 @@
 
 <div id="cart-div">
    <div>
-      <p>Your Selections</p>
+      <p>Your Picks</p>
       <div>
-  <p>${event.hall.name}</p>
-  <c:set var="isWed" value="${event.type.toLowerCase().equals(\"wedding\") == true}" scope="session" />
-  <p>${event.fromDate} 
-     <c:if test="${isWed}" >
-        To ${event.toDate}
-     </c:if>
-  </p>
-  <c:choose>
-  <c:when test="${isWed}">
-   <p>${event.hall.price} *  ${event.noOfDays}: ${event.noOfDays * event.hall.price}</p>
-   </c:when>
-   <c:otherwise>
-      <p>Hall Price: ${event.hall.price}</p>
-   </c:otherwise>
-</c:choose>
+         <div class="row">
+            <div class="col-sm-3">
+               <img src="/${event.hall.imageUrl}"  alt="Hall" width="80px" height="80px" />
+            </div>
+            <div class="col-sm-9">
+               <p>${event.hall.name}</p>
+               <c:set var="isWed" value="${event.type.toLowerCase().equals(\"wedding\") == true}" scope="session" />
+               <p style="font-size: 10px;">${event.fromDate} 
+                  <c:if test="${isWed}" >
+                     To ${event.toDate}
+                  </c:if>
+               </p>
+               <c:choose>
+                  <c:when test="${isWed}">
+                     <p>${event.hall.price} *  ${event.noOfDays}: ${event.noOfDays * event.hall.price}</p>
+                  </c:when>
+                  <c:otherwise>
+                     <p>Hall Price: ${event.hall.price}</p>
+                  </c:otherwise>
+               </c:choose>
+            </div>
+         </div>
 </div>
   <c:forEach items="${event.addons}" var="addon">
        <c:choose>

@@ -19,7 +19,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         object-fit: contain;
      }
      .my-card {
-        padding: 10px;
+        margin: 10px;
      }
     </style>
   </head>
@@ -31,7 +31,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <h4 style="text-align: center; padding-bottom: 10px">Add the type of cake you want</h4>
          </div>
        </div>
-      <div class="row">
+      <div class="row" style="padding-bottom: 30px">
          <div class="col-sm-9">
             <div class="row">
       <c:forEach items="${addon}" var="cake">
@@ -46,17 +46,21 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
               </div>
               <p>Min: ${cake.minQuantity}kg</p>
               
-             <form action="/event/addon/cake/add" method="post" style="float: right;">
-              <div style="display: flex;">
-              <input
+             <form action="/event/addon/cake/add" method="post" >
+              <div class="row" style="align-items: center;">
+                <div class="col-sm-8">
+              <label>Kg:   </label><input
               name="weight"
               type="number"
               step="0.5"
               min="${cake.minQuantity}"
               value="${cake.minQuantity}"
-              style="margin-right: 10px;"
+              style="width: 70px; margin-left: 20px;"
             />
+          </div>
+          <div class="col-sm-4">
             <input type="submit" value="Add" class="btn btn-outline-secondary" />
+          </div>
             </div>
             <input type="hidden" name="qty" value="1" />
             <input type="hidden" name="id" value="${cake.id}" />

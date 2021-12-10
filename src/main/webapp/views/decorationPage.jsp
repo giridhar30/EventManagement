@@ -19,7 +19,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           object-fit: contain;
        }
        .my-card {
-          padding: 10px;
+          margin: 10px;
        }
     </style>
   </head>
@@ -27,7 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ include file="navbar.jsp" %>
     
     <div class="container">
-      <div class="row">
+      <div class="row" style="padding-bottom: 30px">
          <div class="col-sm-9">
             <h4 style="text-align: center; padding-bottom: 10px">Add your desired decoration(s)</h4>
          </div>
