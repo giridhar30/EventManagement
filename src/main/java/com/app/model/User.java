@@ -61,7 +61,9 @@ public class User {
         return id == other.id && Objects.equals(mailId, other.mailId) && Objects.equals(name, other.name)
                 && Objects.equals(password, other.password) && Objects.equals(phone, other.phone);
     }
-
+    
+    
+    
     public int getId() {
         return id;
     }

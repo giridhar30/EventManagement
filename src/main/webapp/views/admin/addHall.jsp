@@ -17,6 +17,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   </head>
   <body>
     <div id="successMsg"></div>
+    <div style="position: absolute; top: 10px; left: 20px">
+      <a href="/admin/hall" class="btn btn-secondary">Back</a>
+    </div>
     <h2 style="text-align: center">Add Hall</h2>
     <spring:form
       method="post"
@@ -85,7 +88,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         />
       </div>
 
-      <input type="submit" value="Add" />
+      <div style="text-align: center">
+        <input type="submit" value="Add" />
+      </div>
     </spring:form>
     <c:set var="added" value="${added}" />
     <c:if test="${added!=null}">

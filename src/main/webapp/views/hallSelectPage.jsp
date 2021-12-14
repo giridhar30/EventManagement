@@ -57,7 +57,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                div.setAttribute("style", "width: 18rem;")
                
                let img = document.createElement('img');
-               img.setAttribute("src", "http://localhost:8080/" + hall.imageUrl);
+               img.setAttribute("src", "http://localhost:8080" + hall.imgUrl);
                img.setAttribute("class","card-img-top");
                img.setAttribute("style", "height: 220px; object-fit: cover;")
                let innerdiv = document.createElement("div");

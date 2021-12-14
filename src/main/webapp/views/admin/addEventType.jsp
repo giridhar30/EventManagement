@@ -4,7 +4,7 @@ uri="http://www.springframework.org/tags/form" %> <%@ taglib
 uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
-    <title>Add Decoration</title>
+    <title>Add Event Type</title>
     <meta charset="ISO-8859-1" />
     <link
       rel="stylesheet"
@@ -17,54 +17,27 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   </head>
   <body>
     <div id="successMsg"></div>
-    <div style="position: absolute; top: 10px; left: 20px">
-      <a href="/admin/decoration" class="btn btn-secondary">Back</a>
+     <div style="position: absolute; top: 10px; ;left: 20px">
+      <a href="/admin/event-type" class="btn btn-secondary">Back</a>
     </div>
-    <h2 style="text-align: center">Add Decoration</h2>
-
+    <h2 style="text-align: center">Add Event Type</h2>
     <spring:form
       method="post"
-      action="/admin/decoration/add"
-      modelAttribute="decorBean"
+      action="/admin/event-type/add"
+      modelAttribute="eventTypeBean"
       class="m-5"
       enctype="multipart/form-data"
     >
       <div class="form-group">
-        <label for="name">Decoration Name</label>
+        <label for="name">Event Type</label>
         <spring:input
           type="text"
           class="form-control border border-dark"
           name="name"
-          path="name"
+          path="eventName"
           required="true"
         />
       </div>
-      <div class="form-group">
-        <label for="price">Price</label>
-        <spring:input
-          type="number"
-          class="form-control border border-dark"
-          name="price"
-          path="price"
-          required="true"
-        />
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone</label>
-        <spring:input
-          type="number"
-          class="form-control border border-dark"
-          name="phone"
-          path="phone"
-          required="true"
-        />
-      </div>
-      <c:if test="${edit == true}">
-        <div>
-          <label for="file">Current Image</label>
-          <a href="${decorBean.imgUrl}">${decorBean.imgUrl}</a>
-        </div>
-      </c:if>
       <div class="form-group">
         <label for="file">Image</label>
         <input
@@ -74,9 +47,8 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
           required="true"
         />
       </div>
-
       <div style="text-align: center">
-        <input type="submit" value="Add" />
+      <input type="submit" value="Add" />
       </div>
     </spring:form>
     <c:set var="added" value="${added}" />

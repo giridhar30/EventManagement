@@ -18,7 +18,7 @@ public class Hall {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String name, imageUrl, address, phone;
+	private String name, imgUrl, address, phone;
 	private	int capacity, price;
 	
 	@OneToMany(mappedBy = "hall", fetch = FetchType.LAZY)
@@ -31,7 +31,7 @@ public class Hall {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(capacity, events, id, imageUrl, name, price);
+		return Objects.hash(capacity, events, id, imgUrl, name, price);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class Hall {
 			return false;
 		Hall other = (Hall) obj;
 		return capacity == other.capacity && Objects.equals(events, other.events) && id == other.id
-				&& Objects.equals(imageUrl, other.imageUrl) && Objects.equals(name, other.name) && price == other.price;
+				&& Objects.equals(imgUrl, other.imgUrl) && Objects.equals(name, other.name) && price == other.price;
 	}
 
 
@@ -64,12 +64,12 @@ public class Hall {
 		this.name = name;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImgUrl() {
+		return imgUrl;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public int getCapacity() {
