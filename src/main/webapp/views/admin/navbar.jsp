@@ -13,9 +13,7 @@
   <div class="container"><b class="fa fa-diamond text-white"></b>&nbsp;&nbsp;<a class="navbar-brand text-white href="#page-top">GRANDEUR EVENT MANAGERS</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false"><i class="fa fa-align-justify"></i></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">      
-            <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="/contact">Contact</a></li>
-            <li class="nav-item"><a class="nav-link text-white" href="/user/events">My events</a></li>       
+            <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>      
           <c:choose>
           <c:when test="${pageContext.request.userPrincipal.name != null}">
             <li class="nav-item"><a class="nav-link text-white" href="javascript:document.getElementById('logout').submit()">Log out</a></li>

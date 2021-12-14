@@ -5,18 +5,35 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <title>Admin Home</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic"
+    />
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <style>
+      .btn {
+        border-radius: 5px;
+      }
+    </style>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
+    <%@include file="navbar.jsp" %>
     <h2 style="text-align: center; margin: 20px">Admin Home</h2>
-    <div style="position: absolute; top: 10px; right: 20px">
-      <a class="btn btn-secondary" href="/user/logout">Logout</a>
-    </div>
     <div style="display: flex; justify-content: center">
       <table class="table table-striped" style="width: 80vw; margin-top: 30px">
         <tr>
@@ -67,5 +84,11 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </tr>
       </table>
     </div>
+    <c:set var="login" value="${login}" />
+    <c:if test="${login!=null}">
+      <script>
+        swal("Login Success!", "You have logged in successfully!", "success");
+      </script>
+    </c:if>
   </body>
 </html>

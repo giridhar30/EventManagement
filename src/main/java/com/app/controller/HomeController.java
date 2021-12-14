@@ -1,5 +1,7 @@
 package com.app.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,16 +19,12 @@ public class HomeController {
 	
 	@Autowired
 	EventTypeDAO eventTypeDao;
-	
-	@RequestMapping(value = "/dummyHome", method = RequestMethod.GET)
-	public String home() {
-		return "home";
-	}
 
 	@GetMapping({"/home", "/"})
 	public String loadHomePage(ModelMap mm, 
 			@RequestParam(value = "logout", required = false) String logout,
-			@RequestParam(value = "login", required = false) String login
+			@RequestParam(value = "login", required = false) String login,
+			HttpServletRequest request
 			) {
 		if (login != null) {
             mm.addAttribute("login", "Signed in successfully!");
@@ -34,6 +32,9 @@ public class HomeController {
 		if (logout != null) {
             mm.addAttribute("logout", "Logged out successfully!");
         }
+		if (request.isUserInRole("ROLE_ADMIN")) {
+			return "admin/adminHome";
+		}
 		return "homePage";
 	}
 	

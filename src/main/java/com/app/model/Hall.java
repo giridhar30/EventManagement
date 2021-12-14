@@ -26,7 +26,7 @@ public class Hall {
 	
 	@Override
 	public String toString() {
-		return "Hall [id=" + id + ", name=" + name + ", capacity=" + capacity + ", price=" + price + ", events=" + events + "]";
+		return "Hall: " + name;
 	}
 
 	@Override

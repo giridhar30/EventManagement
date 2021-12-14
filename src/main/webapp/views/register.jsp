@@ -6,26 +6,30 @@ prefix="c" %>
   <head>
     <meta charset="ISO-8859-1" />
     <title>Registration</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic"
+    />
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
     />
     <link rel="stylesheet" href="/assets/styles.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/assets/scripts.js"></script>
   </head>
   <body>
-    <div id="errorMsg"></div>
-
-    <div class="nav-bar">
-      <div class="left">
-        <h5>GRANDEUR EVENT MANAGERS</h5>
-      </div>
-      <div class="right">
-        <a class="m-4" href="/user/login">Sign In</a>
-      </div>
-    </div>
+    <%@include file="navbar.jsp" %>
 
     <form
       method="post"
@@ -34,13 +38,14 @@ prefix="c" %>
       id="registerForm"
       onsubmit="return validateRegistration();"
     >
-      <p class="h2 text-muted text-center">User Registration</p>
+      <p class="h2 text-black text-center">User Registration</p>
 
-      <div class="form-group">
-        <label for="name">Name</label>
+      <div class="form-group m-4">
+        <label style="margin-left: 25%" for="name">Name</label>
         <input
           type="text"
-          class="form-control border border-dark"
+          class="form-control border border-primary"
+          style="margin-left: 25%; width: 50%"
           name="name"
           id="name"
           autofocus
@@ -48,43 +53,47 @@ prefix="c" %>
         />
       </div>
 
-      <div class="form-group">
-        <label for="mailId">Email</label>
+      <div class="form-group m-4">
+        <label style="margin-left: 25%" for="mailId">Email</label>
         <input
           type="email"
-          class="form-control border border-dark"
+          class="form-control border border-primary"
+          style="margin-left: 25%; width: 50%"
           name="mailId"
           required
         />
       </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
+      <div class="form-group m-4">
+        <label style="margin-left: 25%" for="password">Password</label>
         <input
           type="password"
-          class="form-control border border-dark"
+          class="form-control border border-primary"
+          style="margin-left: 25%; width: 50%"
           id="pass"
           name="password"
           required
         />
       </div>
 
-      <div class="form-group">
-        <label for="ucpass">Confirm Password</label>
+      <div class="form-group m-4">
+        <label style="margin-left: 25%" for="ucpass">Confirm Password</label>
         <input
           type="password"
-          class="form-control border border-dark"
+          class="form-control border border-primary"
+          style="margin-left: 25%; width: 50%"
           id="cpass"
           name="ucpass"
           required
         />
       </div>
 
-      <div class="form-group">
-        <label for="phone">Mobile Number</label>
+      <div class="form-group m-4">
+        <label style="margin-left: 25%" for="phone">Mobile Number</label>
         <input
           type="text"
-          class="form-control border border-dark"
+          class="form-control border border-primary"
+          style="margin-left: 25%; width: 50%"
           id="phone"
           name="phone"
           required
@@ -97,17 +106,24 @@ prefix="c" %>
         value="${_csrf.token}"
       />
 
-      <input type="submit" class="form-control" value="REGISTER" />
+      <div class="text-center">
+        <input
+          type="submit"
+          class="btn btn-primary"
+          style="width: 20%"
+          value="REGISTER"
+        />
+      </div>
     </form>
 
-    <div class="text-center mb-5">
+    <div class="text-center p-5 pt-1">
       Already User? <a href="/user/login">Login here</a>
     </div>
 
     <c:set var="error" value="${error}" />
     <c:if test="${error!=null}">
       <script>
-        showErrorMsg("${error}");
+        swal("Sign up failed!", "${error}", "error");
       </script>
     </c:if>
   </body>

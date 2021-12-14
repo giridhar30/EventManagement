@@ -5,15 +5,19 @@ function validateRegistration() {
   const phone = document.querySelector("#phone").value;
 
   if (!/^[a-zA-Z\.\s]*$/.test(name)) {
-    showErrorMsg("Invalid Name!");
+    swal("Sign up failed!", "Invalid Name!", "error");
     return false;
   }
   if (pass !== cpass) {
-    showErrorMsg("Password did not match confirm password!");
+    swal(
+      "Sign up failed!",
+      "Password did not match confirm password!",
+      "error"
+    );
     return false;
   }
   if (!/^[6789]\d{9}$/.test(phone)) {
-    showErrorMsg("Invalid phone number!");
+    swal("Sign up failed!", "Invalid phone number!", "error");
     return false;
   }
   return true;
