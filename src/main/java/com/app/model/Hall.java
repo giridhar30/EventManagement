@@ -18,7 +18,7 @@ public class Hall {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String name, imageUrl, address, phone;
+	private String name, imgUrl, address, phone;
 	private	int capacity, price;
 	
 	@OneToMany(mappedBy = "hall")
@@ -31,16 +31,7 @@ public class Hall {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + capacity;
-		result = prime * result + id;
-		result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
-		result = prime * result + price;
-		return result;
+		return Objects.hash(capacity, events, id, imgUrl, name, price);
 	}
 
 	@Override
@@ -52,33 +43,8 @@ public class Hall {
 		if (getClass() != obj.getClass())
 			return false;
 		Hall other = (Hall) obj;
-		if (address == null) {
-			if (other.address != null)
-				return false;
-		} else if (!address.equals(other.address))
-			return false;
-		if (capacity != other.capacity)
-			return false;
-		if (id != other.id)
-			return false;
-		if (imageUrl == null) {
-			if (other.imageUrl != null)
-				return false;
-		} else if (!imageUrl.equals(other.imageUrl))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
-			return false;
-		if (price != other.price)
-			return false;
-		return true;
+		return capacity == other.capacity && Objects.equals(events, other.events) && id == other.id
+				&& Objects.equals(imgUrl, other.imgUrl) && Objects.equals(name, other.name) && price == other.price;
 	}
 
 
@@ -98,12 +64,12 @@ public class Hall {
 		this.name = name;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
+	public String getImgUrl() {
+		return imgUrl;
 	}
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public int getCapacity() {

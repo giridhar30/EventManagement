@@ -5,46 +5,25 @@
 <taglib>
   <tlibversion>1.0</tlibversion>
   <jspversion>1.1</jspversion>
-  <shortname>Custom tags</shortname>
+  <shortname>my coda tag library</shortname>
   <tag>
-    <name>homeEventsDisplay</name>
-    <tagclass>com.customtags.HomeEventsDisplay</tagclass>
+    <name>modelDisplay</name>
+    <tagclass>com.customtags.ModelDisplay</tagclass>
     <bodycontent>empty</bodycontent>
     <attribute>
-      <name>eventList</name>
+      <name>modelClass</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>list</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+     <attribute>
+      <name>modelName</name>
       <required>true</required>
       <rtexprvalue>true</rtexprvalue>
     </attribute>
   </tag>
-  <tag>
-    <name>decorDisplay</name>
-    <tagclass>com.customtags.DecorationDisplay</tagclass>
-    <bodycontent>empty</bodycontent>
-    <attribute>
-      <name>decor</name>
-      <required>true</required>
-      <rtexprvalue>true</rtexprvalue>
-    </attribute>
-  </tag>
-  <tag>
-    <name>cakeDisplay</name>
-    <tagclass>com.customtags.CakeDisplay</tagclass>
-    <bodycontent>empty</bodycontent>
-    <attribute>
-      <name>cake</name>
-      <required>true</required>
-      <rtexprvalue>true</rtexprvalue>
-    </attribute>
-  </tag>
-  <tag>
-    <name>photoDisplay</name>
-    <tagclass>com.customtags.PhotographyDisplay</tagclass>
-    <bodycontent>empty</bodycontent>
-    <attribute>
-      <name>photo</name>
-      <required>true</required>
-      <rtexprvalue>true</rtexprvalue>
-    </attribute>
-  </tag>
- 
 </taglib>

@@ -15,6 +15,7 @@ public class FileStorageService {
 	public String save(MultipartFile file, String path) {
 		Path root = Paths.get("src/main/resources/static/images", path);
 		String filePath = LocalDate.now().toString() + "_" +  file.getOriginalFilename();
+		
 		 try {
 		      Files.copy(file.getInputStream(), root.resolve(filePath));
 		    } catch (Exception e) {
