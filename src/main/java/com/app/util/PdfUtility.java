@@ -54,7 +54,8 @@ public class PdfUtility {
 			String bodyContent = "\nGreetings!\n\nYour booking has been confirmed and the hall "
 					+ "and specified add-ons has been allocated successfully. "
 					+ "Please find attached the billing details in the excel file. "
-					+ "The particulars that has been selected by you are listed below.";
+					+ "The particulars that has been selected by you are listed below."
+					+ "For add-on related queries, kindly refer to the contact numbers given respectively.";
 			
 			Paragraph para = new Paragraph();
 			para.add(new Chunk(bodyContent));
@@ -65,7 +66,7 @@ public class PdfUtility {
 			Paragraph addons = new Paragraph();
 			for (Addon a: content) {
 				addons.add(Chunk.TABBING);
-				addons.add(new Chunk("• " + a.getName()));
+				addons.add(new Chunk("• " + a.getName() + " - Ph: " + a.getPhone()));
 				addons.add(Chunk.NEWLINE);
 			}
 			doc.add(addons);

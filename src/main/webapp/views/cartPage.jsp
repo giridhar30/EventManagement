@@ -7,7 +7,7 @@
       background-color: white;;
       height: 80vh;
       padding: 10px;
-      width: 280px;
+      width: 310px;
       position: fixed;
       right: 30px;
       bottom: 40px;
@@ -39,7 +39,7 @@
 
 <div id="cart-div">
    <div id="cart-div-inner">
-      <div style="position: sticky; top: 0px; background-color: white; padding: 5px 5px 5px 5px">
+      <div style="position: sticky; top: 0px; background-color: white; padding: 5px">
          <h5 style="text-align: center;">Your Picks</h5>
       </div>
       <div style="margin-bottom: -5px;">
@@ -124,7 +124,7 @@
       </div>
    </div>
    <div style="text-align: center;padding: 5px;">
-      <form method="post" action="/event/addon/delete">
+      <form method="post" action="/event/addon/delete" id="deleteForm${loop.index}">
          <input type="hidden" name="index" value="${loop.index}" />
          <input
          type="hidden"
@@ -132,15 +132,17 @@
          value="${_csrf.token}"
        />
        <input type="hidden" name="currentUrl" value="${requestScope['javax.servlet.forward.request_uri']}" /> 
-      <button type="submit" class="btn btn-outline-danger" style="font-size: 12px;margin-top: -10px;">REMOVE</a>
+      <button type="submit" form="deleteForm${loop.index}" class="btn btn-outline-danger" style="font-size: 12px;margin-top: -10px;">REMOVE</button>
       </form>
    </div>
      <hr />
   </c:forEach>
 </div>
 <c:if test="${event != null}">
-   <div style="position: absolute; bottom: 0px; left: 0px">  
-      <button class="btn btn-success" style="width: 280px;">Continue to Payment: &#x20b9;${event.totalPrice}</button>
+   <div style="position: absolute; bottom: 0; left: 0;">  
+      <form action="/payment" method="post" id="paymentForm">
+      </form>
+      <button class="btn btn-primary p-3" type="submit" form="paymentForm" style="border-radius: 0; width: 310px; ">Continue to Payment: &#x20b9;${event.totalPrice}</button>
    </div>
 </c:if>
 </div>

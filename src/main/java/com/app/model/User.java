@@ -22,7 +22,7 @@ public class User {
     private String name;
     private String password;
     private String phone;
-    private String role = "ROLE_ADMIN";
+    private String role = "ROLE_USER";
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Event> events;

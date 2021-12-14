@@ -21,7 +21,7 @@ public class Hall {
 	private String name, imageUrl, address, phone;
 	private	int capacity, price;
 	
-	@OneToMany(mappedBy = "hall", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "hall")
 	private List<Event> events;
 	
 	@Override
@@ -31,7 +31,16 @@ public class Hall {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(capacity, events, id, imageUrl, name, price);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + capacity;
+		result = prime * result + id;
+		result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+		result = prime * result + price;
+		return result;
 	}
 
 	@Override
@@ -43,8 +52,33 @@ public class Hall {
 		if (getClass() != obj.getClass())
 			return false;
 		Hall other = (Hall) obj;
-		return capacity == other.capacity && Objects.equals(events, other.events) && id == other.id
-				&& Objects.equals(imageUrl, other.imageUrl) && Objects.equals(name, other.name) && price == other.price;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (capacity != other.capacity)
+			return false;
+		if (id != other.id)
+			return false;
+		if (imageUrl == null) {
+			if (other.imageUrl != null)
+				return false;
+		} else if (!imageUrl.equals(other.imageUrl))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (phone == null) {
+			if (other.phone != null)
+				return false;
+		} else if (!phone.equals(other.phone))
+			return false;
+		if (price != other.price)
+			return false;
+		return true;
 	}
 
 

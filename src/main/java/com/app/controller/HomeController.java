@@ -18,12 +18,12 @@ public class HomeController {
 	@Autowired
 	EventTypeDAO eventTypeDao;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/dummyHome", method = RequestMethod.GET)
 	public String home() {
-		return "homePage";
+		return "home";
 	}
 
-	@GetMapping({"/home"})
+	@GetMapping({"/home", "/"})
 	public String loadHomePage(ModelMap mm, 
 			@RequestParam(value = "logout", required = false) String logout,
 			@RequestParam(value = "login", required = false) String login
@@ -34,7 +34,12 @@ public class HomeController {
 		if (logout != null) {
             mm.addAttribute("logout", "Logged out successfully!");
         }
-		return "home";
+		return "homePage";
+	}
+	
+	@GetMapping("/contact")
+	public String loadContactPage() {
+		return "contact";
 	}
 	
 }

@@ -6,45 +6,23 @@ prefix="c" %>
   <head>
     <meta charset="ISO-8859-1" />
     <title>Login</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/assets/styles.css" />
-    <script src="/assets/scripts.js"></script>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
+      <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+      <link rel="stylesheet" href="/assets/styles.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
 
-    <c:url value="/user/logout" var="logoutUrl" />
-    <form id="logout" action="${logoutUrl}" method="post">
-      <input
-        type="hidden"
-        name="${_csrf.parameterName}"
-        value="${_csrf.token}"
-      />
-    </form>
-
-    <div class="nav-bar">
-      <div class="left">
-        <h5>GRANDEUR EVENT MANAGERS</h5>
-      </div>
-      <div class="right">
-        <a class="m-4" href="/home">Home</a>
-            <a
-              class="m-4"
-              href="javascript:document.getElementById('logout').submit()"
-            >
-              Logout
-            </a>
-      </div>
-    </div>    
+    <%@include file="navbar.jsp" %> 
 
     <p class="h2 text-muted text-center mt-3">My Events</p>
 
     <table class="table table-striped mt-5">
-      <tr class="table">
+      <tr>
         <th>Event</th>
         <th>From</th>
         <th>To</th>
@@ -65,5 +43,14 @@ prefix="c" %>
         </tr>
       </c:forEach>
     </table>
+
+    <c:set var="paymentSuccess" value="${paymentSuccess}" />
+
+    <c:if test="${paymentSuccess}">
+      <script>
+        swal("Transaction Success!", "Event booked successfully!", "success");
+      </script>
+    </c:if>
+
   </body>
 </html>

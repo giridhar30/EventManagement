@@ -25,7 +25,7 @@ public class Decoration extends Addon {
 	@Override
 	public Map<Object, Object> getParticulars() {
 		Map<Object, Object> map = new HashMap<>();
-		map.put("Image URL", imgUrl);
+//		map.put("Image URL", imgUrl);
 		return map;
 	}
 	

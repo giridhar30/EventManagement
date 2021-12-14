@@ -43,8 +43,8 @@ public class PaymentUtlity {
 		return PaytmChecksum.generateSignature(params, paymentProperties.getMerchantKey());
 	}
 	
-	public String getPaymentStatus(Map<String, String[]> requestParams) {
-		String result = null;
+	public boolean getPaymentStatus(Map<String, String[]> requestParams) {
+		boolean result = false;
 		TreeMap<String, String> params = new TreeMap<>();
 		String paytmCheckSum = null;
 		for (Entry<String, String[]> paramEntry: requestParams.entrySet()) {
@@ -59,15 +59,10 @@ public class PaymentUtlity {
 		try {
 			if (isCheckSumValid(paytmCheckSum, params) && params.containsKey("RESPCODE")) {
 				if (params.get("RESPCODE").equals("01")) {
-					result = "payment success";
-				} else {
-					result = "payment failed";
+					result = true;
 				}
-			} else {
-				result = "checksum mismatched";
-			}
+			} 
 		} catch (Exception e) {
-			result = e.toString();
 			e.printStackTrace();
 		}
 		

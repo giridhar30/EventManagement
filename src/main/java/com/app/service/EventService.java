@@ -10,10 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.app.dao.CakeDAO;
 import com.app.dao.DecorationDAO;
+import com.app.dao.EventDAO;
 import com.app.dao.PhotographyDAO;
 import com.app.model.Cake;
 import com.app.model.Decoration;
+import com.app.model.Event;
 import com.app.model.Photography;
+import com.app.model.User;
 
 @Service
 public class EventService {
@@ -23,6 +26,9 @@ public class EventService {
 	CakeDAO cakeDao;
 	@Autowired
 	PhotographyDAO photoDao;
+	
+	@Autowired
+	private EventDAO eventDao;
 	
 	public String fetchAddon(Decoration decor, HttpSession session) {
 		List<Decoration> decors = decorDao.findAll();
@@ -41,5 +47,9 @@ public class EventService {
 		List<Photography> photos = photoDao.findAll();
 		session.setAttribute("addon", photos);
 		return "photoPage";
+	}
+	
+	public List<Event> findByUser(User user) {
+		return eventDao.findByUser(user);
 	}
 }

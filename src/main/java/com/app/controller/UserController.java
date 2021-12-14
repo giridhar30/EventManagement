@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.app.model.User;
 import com.app.security.MyUserDetails;
+import com.app.service.EventService;
 import com.app.service.UserService;
 
 @Controller
@@ -20,6 +21,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService us;
+	
+	@Autowired
+	private EventService es;
 
 	@GetMapping("/register")
 	public String loadRegisterPage(ModelMap mm) {
@@ -60,7 +64,7 @@ public class UserController {
 		Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();  
 		if (obj instanceof MyUserDetails) { 
 			User user = ((MyUserDetails) obj).getUser(); 
-			mm.addAttribute("events", user.getEvents());
+			mm.addAttribute("events", es.findByUser(user));
 		} 
 		return "myevents";
 	}

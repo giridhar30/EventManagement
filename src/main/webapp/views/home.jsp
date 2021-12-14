@@ -14,6 +14,10 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="/assets/styles.css" />
     <script src="/assets/scripts.js"></script>
   </head>
@@ -31,7 +35,8 @@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
     <div class="nav-bar">
       <div class="left">
-        <h5>GRANDEUR EVENT MANAGERS</h5>
+        <span class="fa fa-diamond"></span>
+        <div class="h5 ml-5 pb-1">GRANDEUR EVENT MANAGERS</div>
       </div>
       <div class="right">
         <c:choose>

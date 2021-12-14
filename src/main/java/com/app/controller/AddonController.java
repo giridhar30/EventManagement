@@ -85,6 +85,9 @@ public class AddonController {
 		addonService.addToSession(session, cake, event.getAddons().size());
 		CakeTrans cakeTrans = new CakeTrans();
 		cakeTrans.setCake(cake);
+		cakeTrans.setName(cake.getName());
+		cakeTrans.setPhone(cake.getPhone());
+		cakeTrans.setPrice((int) (cake.getPrice() * weight * quantity));
 		cakeTrans.setWeight(weight);
 		cakeTrans.setQuantity(quantity);
 		cakeTrans = cakeTransDAO.save(cakeTrans);
@@ -115,6 +118,7 @@ public class AddonController {
 		List<Addon> addons = event.getAddons();
 		Addon toDelete = addons.get(index);
 		addons.remove(toDelete);
+		event.setTotalPrice(event.getTotalPrice() - toDelete.getPrice());
 		addonService.removeFromSession(session, toDelete);
 		if(toDelete instanceof CakeTrans) {
 			cakeTransDAO.delete((CakeTrans)toDelete);

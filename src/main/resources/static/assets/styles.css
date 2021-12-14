@@ -1,113 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
-
-* {
-  font-family: "Work Sans", sans-serif;
+body {
+  background-color: #fffdef;
+}
+a:hover {
+  color: black !important;
+}
+.header {
+  margin: 10%;
+  padding: 3%;
+  padding-top: 0;
+}
+.header h1 {
+  padding: 5%;
+  padding-top: 1%;
 }
 
-#errorMsg,
-#successMsg {
-  visibility: hidden;
-  min-width: 250px;
-  background-color: #f55;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  right: 5%;
-  top: 5%;
-  font-size: 18px;
-  font-family: sans-serif;
-}
-
-#successMsg {
-  background-color: #006400;
-}
-
-#errorMsg.show,
-#successMsg.show {
-  visibility: visible;
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 3.5s;
-  animation: fadein 0.5s, fadeout 0.5s 3.5s;
-}
-
-@-webkit-keyframes fadein {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  to {
-    top: 5%;
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    top: 0;
-    opacity: 0;
-  }
-  to {
-    top: 5%;
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeout {
-  from {
-    top: 5%;
-    opacity: 1;
-  }
-  to {
-    top: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes fadeout {
-  from {
-    top: 5%;
-    opacity: 1;
-  }
-  to {
-    top: 0;
-    opacity: 0;
-  }
-}
-
-input[type="submit"] {
-  cursor: pointer;
-  margin-top: 2rem;
-  background-color: #63418b;
-  color: white;
-  border: 1px solid black;
-  border-radius: 4px;
-  text-transform: uppercase;
-}
-
-.nav-bar {
-  background-color: #63418b;
-  color: white;
-  padding: 4%;
-  padding-top: 2%;
-}
-
-.nav-bar .left {
-  display: inline;
-  float: left;
-}
-
-.nav-bar .right {
-  display: inline;
-  float: right;
-}
-
-.nav-bar a {
-  color: white;
-}
-
-.nav-bar a:hover {
-  color: black;
-  text-decoration: none;
+.input {
+  display: block;
+  background-color: #fffdef;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 30%;
 }

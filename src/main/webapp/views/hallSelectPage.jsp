@@ -9,8 +9,24 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
    <head>
       <meta charset="UTF-8">
       <title>Choose Hall</title>
+      <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
+      <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+      <link rel="stylesheet" href="/assets/styles.css" />
       <style>
-         .card-text {
+        .header {
+            margin: 10%;
+            padding: 3%;
+            padding-top: 0;
+        }
+        .header h1 {
+            padding: 5%;
+            padding-top: 1%;
+        }
+        .card-text {
             margin: -3px;
             margin-left: 0px;
          }
@@ -108,7 +124,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
                
                
                let button = document.createElement("button");
-               button.setAttribute("class", "btn btn-outline-secondary");
+               button.setAttribute("class", "btn btn-outline-primary");
                button.setAttribute("type", "submit");
 
                if(available) {
@@ -171,24 +187,19 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             }
          }
       </script>
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-         />
+          
    </head>
    <body onload="computeDate()">
       <%@ include file="navbar.jsp" %>
-      <div style="text-align: center;">
+      <div style="text-align: center; margin: 10px;">
          <p>When's the ${event.type}? </p>
-         <form>
-            <input type="date" id="from" onchange="handleFromChange()" value="2021-12-10" />
+         <form class="m-3">
+            <input type="date" id="from" onchange="handleFromChange()"/>
             <c:if test="${event.type.toLowerCase().equals(\"wedding\") == true}">
                <label style="margin-left: 5px; margin-right: 5px;">  To  </label> <input type="date" id="to" value="2021-12-10"  />
             </c:if>
             <br/>
-            <button style="margin-top: 5px;margin-bottom: 20px;" type="button" class="btn btn-outline-primary" onclick="fetchHalls()">Get Halls</button>
+            <button style="margin-top: 5px;margin-bottom: 20px;" type="button" class="btn btn-primary m-3" onclick="fetchHalls()">Get Halls</button>
          </form>
       </div>
       <div class='container'  id="halls">

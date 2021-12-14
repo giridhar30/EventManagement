@@ -6,18 +6,32 @@ prefix="mytag" %>
   <head>
     <meta charset="UTF-8" />
     <title>Choose addons</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic"
+    />
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script src="/assets/scripts.js"></script>
     <style>
       .disp-img {
         height: 160px;
         object-fit: contain;
       }
-      .link:hover {
+      .card:hover {
         text-decoration: none;
         color: black;
         box-shadow: 1px 1px 10px 1px grey;
@@ -26,6 +40,7 @@ prefix="mytag" %>
       .link {
         color: black;
         border-radius: 5px;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -35,7 +50,7 @@ prefix="mytag" %>
     <div class="container" style="padding-bottom: 30px">
       <div class="row">
         <div class="col-sm-9">
-          <h4 style="text-align: center">Addons you might like</h4>
+          <h4 style="text-align: center" class="mt-4">Addons you might like</h4>
         </div>
       </div>
       <div class="row" style="padding-top: 20px">
@@ -53,7 +68,7 @@ prefix="mytag" %>
                     alt="Decoration"
                   />
                   <div class="card-body">
-                    <h5 class="card-title">Decoration</h5>
+                    <h5 class="card-title"><b>Decoration</b></h5>
                     <p class="card-text">
                       Add decorations to the hall by selecting the decoration
                       you like
@@ -75,7 +90,7 @@ prefix="mytag" %>
                     alt="Cake"
                   />
                   <div class="card-body">
-                    <h5 class="card-title">Cake</h5>
+                    <h5 class="card-title"><b>Cake</b></h5>
                     <p class="card-text">
                       You can order cake for the ${event.type} here.
                     </p>
@@ -96,7 +111,7 @@ prefix="mytag" %>
                     alt="Photography"
                   />
                   <div class="card-body">
-                    <h5 class="card-title">Photography</h5>
+                    <h5 class="card-title"><b>Photography</b></h5>
                     <p class="card-text">
                       Select photography of your choice from our set of packages
                     </p>
