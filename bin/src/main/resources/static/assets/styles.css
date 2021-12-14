@@ -1,0 +1,23 @@
+body {
+  background-color: #fffdef;
+}
+a:hover {
+  color: black !important;
+}
+.header {
+  margin: 10%;
+  padding: 3%;
+  padding-top: 0;
+}
+.header h1 {
+  padding: 5%;
+  padding-top: 1%;
+}
+
+.input {
+  display: block;
+  background-color: #fffdef;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 30%;
+}
