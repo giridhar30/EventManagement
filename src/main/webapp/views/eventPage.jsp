@@ -37,7 +37,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <c:forEach items="${eventTypes}" var="event">
           <div class="col-sm-4">
             <div class="card" style="width: 18rem;">
-               <img src="${event.imgUrl}" class="card-img-top" alt="Event Image"  style="height: 300px; object-fit: contain;">
+               <img src="/images/event_type_wedding.jpg" class="card-img-top" alt="Event Image"  style="height: 300px; object-fit: contain;">
                <div class="card-body" style="display: flex; justify-content: space-between; align-content: center;">
                   <h5 class="card-title">${event.eventName}</h5>
                   <!-- <p class="card-text"></p> -->

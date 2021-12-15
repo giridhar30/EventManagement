@@ -26,7 +26,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Entity
 public class Event {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String type;
 	private int noOfDays;

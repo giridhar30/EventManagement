@@ -18,4 +18,6 @@ public interface EventDAO extends JpaRepository<Event, Integer> {
 	
 	public List<Event> findByUser(User user);
 	
+	public Event findTopByOrderByIdDesc();
+	
 }

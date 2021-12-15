@@ -31,7 +31,13 @@ public class Hall {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(capacity, events, id, imgUrl, name, price);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + capacity;
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
 	}
 
 	@Override
@@ -43,8 +49,21 @@ public class Hall {
 		if (getClass() != obj.getClass())
 			return false;
 		Hall other = (Hall) obj;
-		return capacity == other.capacity && Objects.equals(events, other.events) && id == other.id
-				&& Objects.equals(imgUrl, other.imgUrl) && Objects.equals(name, other.name) && price == other.price;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (capacity != other.capacity)
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 
 

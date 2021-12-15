@@ -61,8 +61,9 @@ public class PaymentService {
 			Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();  
 			if (obj instanceof MyUserDetails) { 
 				User user = ((MyUserDetails) obj).getUser(); 
+				event.setId(eventDao.findTopByOrderByIdDesc().getId() + 100);
 				event.setUser(user);
-				event = eventDao.save(event);
+				eventDao.save(event);
 				String customerId = String.valueOf(user.getId());
 				String txnAmount = String.valueOf(event.getTotalPrice());
 				String orderId = String.valueOf(event.getId());

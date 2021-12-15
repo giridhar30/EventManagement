@@ -24,7 +24,7 @@ public class User {
     private String phone;
     private String role = "ROLE_USER";
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
     private List<Event> events;
 
     public List<Event> getEvents() {
