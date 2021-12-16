@@ -42,5 +42,4 @@ public class HomeController {
 	public String loadContactPage() {
 		return "contact";
 	}
-	
 }
