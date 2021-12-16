@@ -8,6 +8,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
     <meta charset="UTF-8" />
     <title>Welcome to Event Management</title>
+    <link rel="icon"  href="/assets/logo.png"  type="image/icon type"> 
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
@@ -35,7 +36,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <div class="container">
       <div class="row">
         <c:forEach items="${eventTypes}" var="event">
-          <div class="col-sm-4">
+          <div class="col-sm-4" style="display: flex; justify-content: center;">
             <div class="card" style="width: 18rem;">
                <img src="${event.imgUrl}" class="card-img-top" alt="Event Image"  style="height: 300px; object-fit: contain;">
                <div class="card-body" style="display: flex; justify-content: space-between; align-content: center;">

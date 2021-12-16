@@ -6,6 +6,7 @@ prefix="c" %>
   <head>
     <meta charset="ISO-8859-1" />
     <title>Login</title>
+    <link rel="icon"  href="/assets/logo.png"  type="image/icon type"> 
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"

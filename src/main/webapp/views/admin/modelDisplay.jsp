@@ -6,7 +6,8 @@ uri="/WEB-INF/customtags.tld" prefix="mytag" %>
 <%@ page import="java.util.List" %>
 <html>
   <head>
-    <title>Admin Home</title>
+    <title>${modelName}</title>
+    <link rel="icon"  href="/assets/logo.png"  type="image/icon type"> 
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"

@@ -6,6 +6,7 @@ prefix="c" %>
   <head>
     <meta charset="ISO-8859-1" />
     <title>Login</title>
+    <link rel="icon"  href="/assets/logo.png"  type="image/icon type"> 
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">

@@ -6,6 +6,7 @@ prefix="mytag" %>
   <head>
     <meta charset="UTF-8" />
     <title>Choose addons</title>
+    <link rel="icon" href="/assets/logo.png" type="image/icon type" />
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"

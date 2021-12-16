@@ -6,6 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <head>
     <title>Add Decoration</title>
     <meta charset="ISO-8859-1" />
+    <link rel="icon" href="/assets/logo.png" type="image/icon type" />
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
       rel="stylesheet"

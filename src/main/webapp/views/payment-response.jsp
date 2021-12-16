@@ -5,7 +5,8 @@ prefix="c" %>
 <html>
   <head>
     <meta charset="ISO-8859-1" />
-    <title>Insert title here</title>
+    <title>Payment Status</title>
+    <link rel="icon"  href="/assets/logo.png"  type="image/icon type"> 
   </head>
   <body>
     ${ paymentStatus }

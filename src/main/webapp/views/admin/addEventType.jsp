@@ -5,6 +5,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
   <head>
     <title>Add Event Type</title>
+    <link rel="icon"  href="/assets/logo.png"  type="image/icon type"> 
     <meta charset="ISO-8859-1" />
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css" />
     <link
@@ -35,7 +36,7 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <body>
     <%@include file="navbar.jsp" %>
     <div style="position: absolute; top: 15%; left: 20px">
-      <a href="/admin/eventtype" class="btn btn-secondary">Back</a>
+      <a href="/admin/eventtype" class="btn btn-secondary" style="color: white">Back</a>
     </div>
     <h2 style="text-align: center; margin-top: 20px">Add Event Type</h2>
     <spring:form
