@@ -31,7 +31,7 @@ public class PaymentUtlity {
         params.put("MOBILE_NO", env.getProperty("paytm.mobile"));
         params.put("EMAIL", env.getProperty("paytm.email"));
         params.put("ORDER_ID", orderId);
-        params.put("TXN_AMOUNT", txnAmount);
+        params.put("TXN_AMOUNT", "1"); // txnAmount - for testing 1
         params.put("CUST_ID", customerId);
         params.put("CHECKSUMHASH", getCheckSum(params));
         mv.addAllObjects(params);

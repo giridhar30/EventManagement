@@ -285,7 +285,7 @@ public class AdminController {
 	@RequestMapping(value = "/eventtype/delete", method=RequestMethod.GET)
 	public String deleteEventType(ModelAndView mv, @RequestParam("id") int id) {
 		eventTypeDao.deleteById(id);
-		return "redirect:/admin/event-type";
+		return "redirect:/admin/eventtype";
 	}
 	
 	@RequestMapping(value = "/decoration/delete", method=RequestMethod.GET)
