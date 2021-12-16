@@ -35,7 +35,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <body>
     <%@include file="navbar.jsp" %>
     <div style="position: absolute; top: 15%; left: 20px">
-      <a href="/admin/cake" class="btn btn-secondary">Back</a>
+      <a href="/admin/cake" class="btn btn-secondary" style="color: white"
+        >Back</a
+      >
     </div>
     <h2 style="text-align: center; margin-top: 20px">Add Cake</h2>
     <spring:form

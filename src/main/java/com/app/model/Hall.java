@@ -31,7 +31,7 @@ public class Hall {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(capacity, events, id, imgUrl, name, price);
+		return Objects.hash(capacity, id, imgUrl, name, price);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class Hall {
 		if (getClass() != obj.getClass())
 			return false;
 		Hall other = (Hall) obj;
-		return capacity == other.capacity && Objects.equals(events, other.events) && id == other.id
+		return capacity == other.capacity && id == other.id
 				&& Objects.equals(imgUrl, other.imgUrl) && Objects.equals(name, other.name) && price == other.price;
 	}
 

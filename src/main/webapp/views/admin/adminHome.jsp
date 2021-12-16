@@ -72,9 +72,9 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         </tr>
         <tr>
           <td>Event Type</td>
-          <td><a href="/admin/event-type" class="btn btn-primary">View</a></td>
+          <td><a href="/admin/eventtype" class="btn btn-primary">View</a></td>
           <td>
-            <a href="/admin/event-type/add" class="btn btn-success">Add</a>
+            <a href="/admin/eventtype/add" class="btn btn-success">Add</a>
           </td>
         </tr>
         <tr>

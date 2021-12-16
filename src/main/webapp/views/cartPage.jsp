@@ -45,7 +45,7 @@
       <div style="margin-bottom: -5px;">
          <div style="display: flex; align-items: center;">
             <div>
-               <img src="/${event.hall.imageUrl}"  alt="Hall" width="80px" height="80px" class="my-img" />
+               <img src="${event.hall.imgUrl}"  alt="Hall" width="80px" height="80px" class="my-img" />
             </div>
             <div style="margin: 0px 10px 0px 10px; width: 250px">
                <div style="display: flex; justify-content: space-between;">

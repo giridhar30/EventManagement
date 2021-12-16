@@ -110,7 +110,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	@GetMapping("/event-type")
+	@GetMapping("/eventtype")
 	public ModelAndView getEventTypes(ModelAndView mv) {
 		List<EventType> eventType = eventTypeDao.findAll();
 		mv.addObject("list", eventType);
@@ -130,7 +130,7 @@ public class AdminController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/event-type/add", method=RequestMethod.GET)
+	@RequestMapping(value = "/eventtype/add", method=RequestMethod.GET)
 	public ModelAndView getEventTypeForm(ModelAndView mv, @RequestParam(required = false) String added) {
 		mv.addObject("eventTypeBean", new EventType());
 		mv.setViewName("admin/addEventType");
@@ -235,15 +235,15 @@ public class AdminController {
 	}
 	
 	
-	@RequestMapping(value = "/event-type/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/eventtype/add", method = RequestMethod.POST)
 	public String addEventType(@Valid EventType eventType, @RequestParam("file") MultipartFile file) {
 		String imgUrl = fileService.save(file, "event-type");
 		eventType.setImgUrl(imgUrl);
 		eventTypeDao.save(eventType);
-		return "redirect:/admin/event-type/add?added";
+		return "redirect:/admin/eventtype/add?added";
 	}
 	
-	@RequestMapping(value = "/event-type/edit", method=RequestMethod.GET)
+	@RequestMapping(value = "/eventtype/edit", method=RequestMethod.GET)
 	public ModelAndView editEventTypeForm(ModelAndView mv, @RequestParam("id") int id) {
 		mv.addObject("eventTypeBean", eventTypeDao.getById(id));
 		mv.addObject("edit", true);
@@ -282,7 +282,7 @@ public class AdminController {
 	
 
 	
-	@RequestMapping(value = "/event-type/delete", method=RequestMethod.GET)
+	@RequestMapping(value = "/eventtype/delete", method=RequestMethod.GET)
 	public String deleteEventType(ModelAndView mv, @RequestParam("id") int id) {
 		eventTypeDao.deleteById(id);
 		return "redirect:/admin/event-type";
@@ -290,40 +290,52 @@ public class AdminController {
 	
 	@RequestMapping(value = "/decoration/delete", method=RequestMethod.GET)
 	public String deleteDecoration(ModelAndView mv, @RequestParam("id") int id) {
-		decorDao.deleteById(id);
+		try {
+			decorDao.deleteById(id);
+		} catch(Exception ex) {}
 		return "redirect:/admin/decoration";
 	}
 	
 	
 	@RequestMapping(value = "/hall/delete", method=RequestMethod.GET)
 	public String deleteHall(ModelAndView mv, @RequestParam("id") int id) {
-		hallDao.deleteById(id);
+		try {
+			hallDao.deleteById(id);
+		} catch(Exception ex) {}
 		return "redirect:/admin/hall";
 	}
 	
 	
 	@RequestMapping(value = "/cake/delete", method=RequestMethod.GET)
 	public String deleteCake(ModelAndView mv, @RequestParam("id") int id) {
-		cakeDao.deleteById(id);
+		try {
+			cakeDao.deleteById(id);	
+		} catch(Exception ex) {}
 		return "redirect:/admin/cake";
 	}
 	
 	
 	@RequestMapping(value = "/photography/delete", method=RequestMethod.GET)
 	public String deletePhotography(ModelAndView mv, @RequestParam("id") int id) {
-		photoDao.deleteById(id);
+		try {
+			photoDao.deleteById(id);
+		} catch(Exception ex) {}
 		return "redirect:/admin/photography";
 	}
 	
 	@RequestMapping(value = "/user/delete", method=RequestMethod.GET)
 	public String deleteUser(ModelAndView mv, @RequestParam("id") int id) {
-		userDao.deleteById(id);
+		try {
+			userDao.deleteById(id);
+		} catch(Exception ex) {}
 		return "redirect:/admin/user";
 	}
 	
 	@RequestMapping(value = "/event/delete", method=RequestMethod.GET)
 	public String deleteEvent(ModelAndView mv, @RequestParam("id") int id) {
-		eventDao.deleteById(id);
+		try {
+			eventDao.deleteById(id);
+		} catch(Exception ex) {}
 		return "redirect:/admin/event";
 	}
 	

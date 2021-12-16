@@ -35,12 +35,12 @@ uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <body>
     <%@include file="navbar.jsp" %>
     <div style="position: absolute; top: 15%; left: 20px">
-      <a href="/admin/event-type" class="btn btn-secondary">Back</a>
+      <a href="/admin/eventtype" class="btn btn-secondary">Back</a>
     </div>
     <h2 style="text-align: center; margin-top: 20px">Add Event Type</h2>
     <spring:form
       method="post"
-      action="/admin/event-type/add"
+      action="/admin/eventtype/add"
       modelAttribute="eventTypeBean"
       class="m-5"
       enctype="multipart/form-data"

@@ -50,12 +50,14 @@ uri="/WEB-INF/customtags.tld" prefix="mytag" %>
     <%@include file="navbar.jsp" %>
     <h2 style="text-align: center; margin: 20px">${modelName}</h2>
     <div style="position: absolute; top: 15%; ;left: 20px">
-      <a href="/admin" class="btn btn-secondary">Back</a>
+      <a href="/admin" class="btn btn-secondary" style="color: white">Back</a>
     </div>
     <div>
+      <c:if test="${(!modelName.equals(\"User\") && !modelName.equals(\"Event\")) == true}"> 
     <div style="text-align: right; margin: 20px;">
       <a href="/admin/${modelName.toLowerCase()}/add" class="btn btn-primary">Add</a>
     </div>
+  </c:if>
   </div>
     <div style="display: flex;justify-content: center;">
     <table class="table table-striped" style="width: 90vw; margin: 20px">
