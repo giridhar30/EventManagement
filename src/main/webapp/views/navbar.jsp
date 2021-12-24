@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="icon" href="/static/assets/logo.svg"  type="image/icon type">
+
 <c:url value="/user/logout" var="logoutUrl" />
     <form id="logout" action="${logoutUrl}" method="post">
       <input

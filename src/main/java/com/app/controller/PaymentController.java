@@ -31,6 +31,7 @@ public class PaymentController {
 	@PostMapping("/payment/response")
 	public RedirectView loadPostPaymentReport(HttpServletRequest req, RedirectAttributes ras, HttpSession session) {
 		Event event = (Event) session.getAttribute("event");
+		session.removeAttribute("addedSet");
 		return paymentService.respondToPayment(req.getParameterMap(), ras, event);
 	}
 	

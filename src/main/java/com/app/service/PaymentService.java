@@ -60,8 +60,15 @@ public class PaymentService {
 		if (halls.contains(event.getHall())) {
 			Object obj = SecurityContextHolder.getContext().getAuthentication().getPrincipal();  
 			if (obj instanceof MyUserDetails) { 
-				User user = ((MyUserDetails) obj).getUser(); 
-				event.setId(eventDao.findTopByOrderByIdDesc().getId() + 100);
+				User user = ((MyUserDetails) obj).getUser();
+				Event prevEvent = eventDao.findTopByOrderByIdDesc();
+				int prevId;
+				if(prevEvent != null) {
+					prevId = prevEvent.getId();
+				} else {
+					prevId = 0;
+				}
+				event.setId(prevId + 100);
 				event.setUser(user);
 				eventDao.save(event);
 				String customerId = String.valueOf(user.getId());
