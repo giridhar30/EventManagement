@@ -3,6 +3,10 @@ This application has been developed by
   + Giridhara Prasath G.  
   + Balakrishnan S.
 
+# Links
+  + video presentation: https://youtu.be/aYblfURekuw
+  + ppt slides: https://docs.google.com/presentation/d/1teg76Vu5lvkMw2Ph7Efa6fpoFeP-P8mAWRe7rOqSmjk/edit?usp=sharing
+
 # Instructions for running the application
 
 ## Clone the repository
