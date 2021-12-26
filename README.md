@@ -19,6 +19,7 @@ This application has been developed by
  + The hosted database already has the required data
  + So, no need to do anything for DB configuration
  + Just get the username and password of the database from us.
+ + Using the obtained username and password, modify application.properties file
  
 ## API keys
  + As this repo is public, it is not allowed to publish the keys in public forum
