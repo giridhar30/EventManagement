@@ -28,4 +28,4 @@ This application has been developed by
 ## Running the project
  + Run the project in your IDE
  + Open `http://localhost:8080` in your browser
- + You can now book an event, login, sign up, and see the events that have been booked by an user
+ + You can now book an event, login, sign up, and see the events that have been booked by a user
